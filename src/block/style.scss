@@ -1,0 +1,22 @@
+/**
+ * Styles for both frontend and backend.
+ */
+
+.wp-block-ecolaguna-image-before-after  {
+  background: $gray;
+  color: $black;
+  margin: 0 auto;
+  max-width: 740px;
+  padding: 0;
+  position: relative;
+
+  & > figure {
+    display: inline-block;
+    margin: 1%;
+    max-width: 48%;
+  }
+  & > figure:nth-child(2) {
+    text-align: right;
+  }
+}
+ 
