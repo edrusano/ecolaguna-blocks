@@ -2,9 +2,8 @@
 
 ## Installation
 
-1. Download code from this repository
-2. Create the subfolder EcoLaguna-blocks under your WordPress plugins directory
-2. Extract the code files to the subfolder you just created.
+1. Download or clone code from this repository
+2. Extract the code zip to the WordPress plugin directory
 
 ## Development
 
