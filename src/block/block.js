@@ -39,32 +39,32 @@ registerBlockType( 'ecolaguna/image-before-after', {
   ],
 
   attributes: {
-		  leftTitle: {
+		  beforeTitle: {
 			   type: 'array',
 			   source: 'children',
-			   selector: 'h2',
+			   selector: '.el-iba-before figcaption',
 		  },
-		  leftImgId: {
+		  beforeImgId: {
 			   type: 'number',
 		  },
-		  leftImgUrl: {
+		  beforeImgUrl: {
 			   type: 'string',
 			   source: 'attribute',
-		    selector: 'img',
+		    selector: '.el-iba-before img',
 		    attribute: 'src',
 		  },
-    rightTitle: {
+    afterTitle: {
 			   type: 'array',
 			   source: 'children',
-			   selector: 'h2',
+			   selector: '.el-iba-after figcaption',
 		  },
-		  rightImgId: {
+		  afterImgId: {
 			   type: 'number',
 		  },
-		  rightImgUrl: {
+		  afterImgUrl: {
 			   type: 'string',
 			   source: 'attribute',
-		    selector: 'img',
+		    selector: '.el-iba-after img',
 		    attribute: 'src',
 		  },
   },
@@ -81,77 +81,79 @@ registerBlockType( 'ecolaguna/image-before-after', {
     const {
       className,
       attributes: {
-        leftTitle,
-        leftImgId,
-        leftImgUrl,
-        rightTitle,
-        rightImgId,
-        rightImgUrl,
+        beforeTitle,
+        beforeImgId,
+        beforeImgUrl,
+        afterTitle,
+        afterImgId,
+        afterImgUrl,
       },
       setAttributes,
 		  } = props;
 
-		  const onChangeLeftTitle = ( value ) => {
-			   setAttributes( { leftTitle: value } );
+		  const onChangeBeforeTitle = ( value ) => {
+			   setAttributes( { beforeTitle: value } );
 		  };
 
-		  const onSelectLeftImage = ( media ) => {
+		  const onSelectBeforeImage = ( media ) => {
 			   setAttributes( {
-        leftImgId: media.id,
-        leftImgUrl: media.url,
+        beforeImgId: media.id,
+        beforeImgUrl: media.url,
       } );
     };
 
-    const onChangeRightTitle = ( value ) => {
-			   setAttributes( { rightTitle: value } );
+    const onChangeAfterTitle = ( value ) => {
+			   setAttributes( { afterTitle: value } );
 		  };
 
-		  const onSelectRightImage = ( media ) => {
+		  const onSelectAfterImage = ( media ) => {
 			   setAttributes( {
-        rightImgId: media.id,
-        rightImgUrl: media.url,
+        afterImgId: media.id,
+        afterImgUrl: media.url,
       } );
     };
 
 	   return (
 	     <div className={ className }>
-        <figure>
+        <figure className="el-iba-before">
           <RichText
 					       tagName="figcaption"
-					       placeholder={ __( 'Write left title…', 'ecolaguna-blocks' ) }
-					       value={ leftTitle }
-					       onChange={ onChangeLeftTitle }
+					       placeholder={ __( 'Before title…', 'ecolaguna-blocks' ) }
+					       value={ beforeTitle }
+					       onChange={ onChangeBeforeTitle }
 			  	    />
-        { leftImgUrl ? (
-          <img src={ leftImgUrl } alt={ __( 'Left Image', 'ecolaguna-blocks' ) } />
+        { beforeImgUrl ? (
+          <img src={ beforeImgUrl } alt={ __( 'Before Image', 'ecolaguna-blocks' ) } />
         ) : (
           <MediaPlaceholder
 			         icon="edit"
 				        labels={ {
-					         title: __( 'Media area left' ),
+					         title: __( 'Before image' ),
 				        } }
-				        onSelect={ onSelectLeftImage }
+				        onSelect={ onSelectBeforeImage }
 		         		allowedTypes="Image"
+            value={ beforeImgId }
 			       />
         ) }
         </figure>
-        <figure>
+        <figure className="el-iba-after">
           <RichText
 					       tagName="figcaption"
-					       placeholder={ __( 'Write right title…', 'ecolaguna-blocks' ) }
-					       value={ rightTitle }
-					       onChange={ onChangeRightTitle }
+					       placeholder={ __( 'After title…', 'ecolaguna-blocks' ) }
+					       value={ afterTitle }
+					       onChange={ onChangeAfterTitle }
 			  	    />
-        { rightImgUrl ? (
-          <img src={ rightImgUrl } alt={ __( 'Right Image', 'ecolaguna-blocks' ) } />
+        { afterImgUrl ? (
+          <img src={ afterImgUrl } alt={ __( 'After Image', 'ecolaguna-blocks' ) } />
         ) : (
           <MediaPlaceholder
 			         icon="edit"
 				        labels={ {
-					         title: __( 'Media area right' ),
+					         title: __( 'After Image' ),
 				        } }
-				        onSelect={ onSelectRightImage }
+				        onSelect={ onSelectAfterImage }
 		         		allowedTypes="Image"
+            value={ afterImgId }
           />
         ) }
         </figure>
@@ -171,27 +173,27 @@ registerBlockType( 'ecolaguna/image-before-after', {
     const {
       className,
       attributes: {
-        leftTitle,
-        leftImgId,
-        leftImgUrl,
-        rightTitle,
-        rightImgId,
-        rightImgUrl,
+        beforeTitle,
+        beforeImgId,
+        beforeImgUrl,
+        afterTitle,
+        afterImgId,
+        afterImgUrl,
       },
 		  } = props;
 
     return (
       <div className={ className }>
-        <figure>
-          <RichText.Content tagName="figcaption" value={ leftTitle } />
-          { leftImgUrl && (
-          <img src={ leftImgUrl } alt={ __( 'Left Image', 'ecolaguna-blocks' ) } />
+        <figure className="el-iba-before">
+          <RichText.Content tagName="figcaption" value={ beforeTitle } />
+          { beforeImgUrl && (
+          <img src={ beforeImgUrl } alt={ __( 'Before Image', 'ecolaguna-blocks' ) } />
           ) }
         </figure>
-        <figure>
-          <RichText.Content tagName="figcaption" value={ rightTitle } />
-          { rightImgUrl && (
-          <img src={ rightImgUrl } alt={ __( 'Right Image', 'ecolaguna-blocks' ) } />
+        <figure className="el-iba-after">
+          <RichText.Content tagName="figcaption" value={ afterTitle } />
+          { afterImgUrl && (
+          <img src={ afterImgUrl } alt={ __( 'After Image', 'ecolaguna-blocks' ) } />
           ) }
         </figure>
       </div>

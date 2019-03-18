@@ -10,12 +10,12 @@
   padding: 0;
   position: relative;
 
-  & > figure {
+  & figure {
     display: inline-block;
     margin: 1%;
     max-width: 48%;
   }
-  & > figure:nth-child(2) {
+  & .el-iba-after {
     text-align: right;
   }
 }
