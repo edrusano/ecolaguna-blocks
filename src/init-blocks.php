@@ -26,7 +26,7 @@ function enqueue_block_assets() {
 	  	__NAMESPACE__ . '-block',
 	  	get_plugin_url() . $style_path,
   		[ 'wp-editor' ],
-	  	\filemtime( get_plugin_dir() . $style_path ),
+	  	\filemtime( get_plugin_dir() . $style_path )
   );
 }
 
@@ -50,7 +50,7 @@ function enqueue_block_editor_assets() {
     __NAMESPACE__ . '-block-editor',
 		  get_plugin_url() . $style_path,
 		  [ 'wp-edit-blocks' ], 
-		  \filemtime( get_plugin_dir() . $style_path ),
+		  \filemtime( get_plugin_dir() . $style_path )
 	 );
 
   $script_path = '/dist/blocks.editor.build.js';
@@ -60,7 +60,7 @@ function enqueue_block_editor_assets() {
   		get_plugin_url() . $script_path,
   		array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ),
 		  \filemtime( get_plugin_dir() . $script_path ),
-	  	true,
+	  	true
 	 );
 }
 
